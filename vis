@@ -1,0 +1,56 @@
+import qiskit
+from qiskit import  QuantumCircuit
+from qiskit import QuantumCircuit, Aer, transpile, execute
+from qiskit.quantum_info import Statevector
+from qiskit.visualization import plot_state_city, plot_bloch_multivector
+from qiskit.visualization import plot_state_paulivec, plot_state_hinton
+from qiskit.visualization import plot_state_qsphere
+qc=QuantumCircuit( , )
+
+
+qc.draw()
+qc.draw('latex')
+print(qc)
+
+backend = Aer.get_backend('statevector_simulator')
+result = backend.run(transpile(qc, backend)).result()
+qcs = result.get_statevector(qc)
+
+print(qcs)
+print(backend)
+print(result)
+array_to_latex(qcs)
+
+job1=qiskit.execute(qc,qiskit.BasicAer.get_backend('qasm_simulator'))
+print(job1.result().get_counts())
+
+//for histograms
+from qiskit.visualization import plot_histogram
+result2=job1.result().get_counts()
+plot_histogram(result2)
+
+// To plot Bloch Vectors
+from qiskit.visualization import plot_bloch_vector
+plot_bloch_vector([0,1,0],title="Bloch1")
+
+//need for all down here
+backend = Aer.get_backend('statevector_simulator')
+result = backend.run(transpile(qc, backend)).result()
+qcs = result.get_statevector(qc)
+
+
+//to visualise quantum bits seperatly
+plot_bloch_multivector(qcs)
+
+//to visualize Q bits in single output
+plot_state_qsphere(qcs)
+
+//to visualize in 3D
+state=Statevector(qc)
+plot_state_city(qcs)
+
+//to visualize in 2D
+plot_state_hinton(qcs)
+
+// coeff vs pauli
+plot_state_paulivec(qcs)
