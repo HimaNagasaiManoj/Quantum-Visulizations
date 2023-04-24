@@ -24,6 +24,25 @@ array_to_latex(qcs)
 job1=qiskit.execute(qc,qiskit.BasicAer.get_backend('qasm_simulator'))
 print(job1.result().get_counts())
 
+//combination of 2 results Histogram
+
+result6=[result4,result5]
+legend=['First execution','Second execution']
+title='New histogram'
+figsize=(10,10)
+color=['crimson','midnightblue']
+plot_histogram(result6,legend=legend,title=title,figsize=figsize,color=color)
+
+#HADAMER GATE
+from qiskit import qiskit,QuantumCircuit
+qc=QuantumCircuit(1,1)
+qc.h(0)
+qc.measure(0,0)
+job=qiskit.execute(qc,qiskit.BasicAer.get_backend('qasm_simulator'))
+result4=job.result().get_counts()
+plot_histogram(result4)
+
+
 //for histograms
 from qiskit.visualization import plot_histogram
 result2=job1.result().get_counts()
@@ -54,3 +73,12 @@ plot_state_hinton(qcs)
 
 // coeff vs pauli
 plot_state_paulivec(qcs)
+
+// Visualizations
+from qiskit import QuantumCircuit, Aer, transpile, execute
+from qiskit.visualization import visualize_transition
+qc=QuantumCircuit(1)
+qc.h(0)
+qc.z(0)
+qc.h(0)
+visualize_transition(qc, trace=True, saveas="5 H Z H gate.mp4", fpg=30, spg=2)
