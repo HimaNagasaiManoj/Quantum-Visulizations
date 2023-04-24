@@ -1,3 +1,21 @@
+//To view information of qiskit
+import qiskit.tools.jupyter
+%qiskit_version_table
+%qiskit_copyright
+
+qiskit.__qiskit_version__
+
+import qiskit
+qiskit.__version__
+
+pip show qiskit-terra
+
+import qiskit
+print(qiskit.__version__)
+
+*//
+
+
 import qiskit
 from qiskit import  QuantumCircuit
 from qiskit import QuantumCircuit, Aer, transpile, execute
@@ -6,6 +24,11 @@ from qiskit.visualization import plot_state_city, plot_bloch_multivector
 from qiskit.visualization import plot_state_paulivec, plot_state_hinton
 from qiskit.visualization import plot_state_qsphere
 qc=QuantumCircuit( , )
+
+qc.size()
+qc.depth()
+qc.dim()
+
 
 
 qc.draw()
